@@ -1,0 +1,77 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% bootstrap_css %}
+    <style>
+        /* Estilos adicionales para el formulario de inicio de sesión de Spinia */
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            width: 360px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .login-form h1 {
+            margin-bottom: 15px;
+            font-size: 96px;
+            font-weight: 500;
+            line-height: 1.1;
+            color: #343a40;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #00A7E1;
+            color: white;
+            border-color: #00A7E1;
+        }
+
+        .btn-primary:hover {
+            background-color: #00A7F6;
+            color: white;
+            border-color: #00A7E1;
+        }
+
+    </style>
+</head>
+<body>
+<div class="login-form">
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group mt-2">
+            <label for="{{ form.username.id_for_label }}" class="mt-2">Correo electrónico:</label>
+            <input type="text" name="username" class="form-control mt-1" id="{{ form.username.id_for_label }}"
+                   value="{{ form.username.value }}">
+            {% for error in form.username.errors %}
+                <span class="text-danger ">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+            <input type="password" name="password" class="form-control mt-1" id="{{ form.password.id_for_label }}">
+            {% for error in form.password.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-2">Iniciar sesión</button>
+    </form>
+</div>
+</body>
+</html>

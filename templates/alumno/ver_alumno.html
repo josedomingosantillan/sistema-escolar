@@ -1,0 +1,71 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alumnos</title>
+    {% bootstrap_css %}
+</head>
+<body>
+{% include '_navigation.html' %}
+<div class="container mt-5">
+    <div class="row">
+        <h1>Lista de Alumnos</h1>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12 col-12 col-lg-12">
+            <a href="{% url 'crear_alumno' %}" class="btn btn-primary btn">Agregar</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-12 col-lg-12">
+            <table class="table mt-5">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo Electrónico</th>
+                    <th>Matricula</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for alumno in alumnos %}
+                    <tr>
+                        <td>{{ alumno.id }}</td>
+                        <td>{{ alumno.nombre }}</td>
+                        <td>{{ alumno.apellido }}</td>
+                        <td>{{ alumno.email }}</td>
+                        <td>{{ alumno.matricula }}</td>
+                        <td>
+                            <a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{% url 'eliminar_alumno' alumno.id %}" method="post"
+                                  style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('¿Estás seguro que deseas eliminar este alumno?')">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 col-12 col-lg-12">
+            <a href="{% url 'crear_alumno' %}" class="btn btn-primary btn">Agregar</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

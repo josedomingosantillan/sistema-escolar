@@ -1,0 +1,41 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Asignatura</title>
+    {% bootstrap_css %}
+</head>
+<body>
+{% include '_navigation.html' %}
+<div class="container">
+    <h1>Detalle del Asignatura</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group mt-2">
+                <label><strong>Nombre:</strong> <br> {{ asignatura.nombre }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <label><strong>Grupo:</strong> <br>{{ asignatura.grupo }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'ver_asignaturas' %}" class="btn btn-secondary form-control"> Asignaturas</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'editar_asignatura' asignatura.id %}" class="btn btn-primary form-control">Editar</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'eliminar_asignatura' asignatura.id %}" class="btn btn-danger form-control"
+                   onclick="return confirm('¿Estás seguro que deseas eliminar esta asignatura?')">Eliminar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

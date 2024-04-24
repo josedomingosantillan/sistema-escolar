@@ -1,0 +1,49 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Alumno</title>
+    {% bootstrap_css %}
+</head>
+<body>
+{% include '_navigation.html' %}
+<div class="container">
+    <h1>Detalle del Alumno</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group mt-2">
+                <label><strong>Nombre:</strong> <br> {{ alumno.nombre }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <label><strong>Apellido:</strong> <br>{{ alumno.apellido }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <label><strong>Correo:</strong> <br>{{ alumno.email }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <label><strong>Matricula:</strong> <br>{{ alumno.matricula }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'ver_alumnos' %}" class="btn btn-secondary form-control"> Alumnos</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'editar_alumno' alumno.id %}" class="btn btn-primary form-control">Editar</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'eliminar_alumno' alumno.id %}" class="btn btn-danger form-control"
+                   onclick="return confirm('¿Estás seguro que deseas eliminar este alumno?')">Eliminar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

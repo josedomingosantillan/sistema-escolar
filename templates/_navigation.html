@@ -1,0 +1,83 @@
+<div class="sidenav">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'ver_docentes' %}">Docentes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'ver_alumnos' %}">Alumnos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'ver_grupos' %}">Grupos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'ver_asignaturas' %}">Asignaturas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'ver_calificaciones' %}">Calificaciones</a>
+        </li>
+        <li class="logout-form">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesión</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+<style>
+    .sidenav {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #343a40;
+        padding-top: 20px;
+    }
+
+    .sidenav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidenav ul li {
+        padding: 10px 20px;
+    }
+
+    .sidenav ul li a {
+        text-decoration: none;
+        color: #ffffff;
+        display: block;
+        transition: color 0.3s;
+    }
+
+    .sidenav ul li a:hover {
+        color: #007bff;
+    }
+
+    .content {
+        margin-left: 250px; /* Asegura que el contenido no quede detrás de la barra de navegación */
+        padding: 20px;
+    }
+
+    .logout-form {
+        margin-top: 20px;
+    }
+
+    .logout-form button {
+        background-color: transparent;
+        border: none;
+        color: #dc3545;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .logout-form button:hover {
+        color: #ff0000;
+    }
+</style>

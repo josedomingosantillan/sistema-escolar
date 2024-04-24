@@ -1,0 +1,30 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    {% bootstrap_css %}
+    <!-- Agrega aquí los estilos CSS de Spinia si los tienes -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+{% include '_navigation.html' %}
+
+<div class="content">
+    <!-- Contenido de la página aquí -->
+    <h1>Bienvenido al Menú Principal</h1>
+</div>
+
+</body>
+</html>

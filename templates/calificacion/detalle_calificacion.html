@@ -1,0 +1,45 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Calificación</title>
+    {% bootstrap_css %}
+</head>
+<body>
+{% include '_navigation.html' %}
+<div class="container">
+    <h1>Detalle de la Calificación</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group mt-2">
+                <label><strong>Alumno:</strong> <br> {{ calificacion.alumno }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <label><strong>Asignatura:</strong> <br>{{ calificacion.asignatura }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <label><strong>Calificación:</strong> <br>{{ calificacion.calificacion }}</label>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'ver_calificaciones' %}" class="btn btn-secondary form-control"> Calificaciones</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'editar_calificacion' calificacion.id %}" class="btn btn-primary form-control">Editar</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a href="{% url 'eliminar_calificacion' calificacion.id %}" class="btn btn-danger form-control"
+                   onclick="return confirm('¿Estás seguro que deseas eliminar esta calificación?')">Eliminar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
